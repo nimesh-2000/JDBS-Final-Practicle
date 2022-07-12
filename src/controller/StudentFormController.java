@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class StudentFormController {
     public AnchorPane studentContext;
-    public TableView tblStudent;
+    public TableView<StudentTM> tblStudent;
     public JFXTextField txtStudentId;
     public JFXTextField txtStudentName;
     public JFXTextField txtContact;

@@ -1,14 +1,13 @@
 package view.tm;
 
-
 import javafx.scene.control.Button;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class StudentTM {
     String student_id;
     String student_name;
