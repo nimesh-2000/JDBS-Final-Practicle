@@ -109,6 +109,13 @@ public class StudentFormController {
     }
 
     private void clearAllTexts() {
+        txtStudentId.clear();
+        txtStudentName.clear();
+        txtEmail.clear();
+        txtContact.clear();
+        txtAddress.clear();
+        txtNIC.clear();
+        txtStudentId.requestFocus();
     }
 
     private void search() {
