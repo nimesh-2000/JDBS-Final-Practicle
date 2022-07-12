@@ -14,4 +14,5 @@ public class Student {
     String contact;
     String address;
     String nic;
+
 }
