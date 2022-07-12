@@ -11,7 +11,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import model.Student;
 import util.CrudUtil;
 import view.tm.StudentTM;
 
@@ -44,7 +47,7 @@ public class StudentFormController {
         loadAllStudents();
 
         
-        btnSaveStudent.setDisable(true);
+//        btnSaveStudent.setDisable(true);
 
 
 
@@ -86,7 +89,13 @@ public class StudentFormController {
                 txtContact.setText(selectedItem.getContact());
                 txtAddress.setText(selectedItem.getAddress());
                 txtNIC.setText(selectedItem.getNic());
-                search();
+                try {
+                    search();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
                 btnSaveStudent.setText("Update");
 
 
@@ -150,11 +159,68 @@ public class StudentFormController {
 
 
     public void studentIdOnAction(ActionEvent actionEvent) {
+        try {
+            search();
+        } catch (ClassNotFoundException |SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void studentIdKeyPressed(KeyEvent keyEvent) {
+        if (keyEvent.getCode()== KeyCode.ENTER){
+            txtStudentName.requestFocus();
+        }
+
     }
 
     public void btnSearchOnAction(ActionEvent actionEvent) {
+        try {
+            search();
+        } catch (ClassNotFoundException |SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void btnSaveOnAction(ActionEvent actionEvent) {
+    public void btnSaveOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        if (btnSaveStudent.getText().equals("Update")){
+            Student s = new Student(
+                    txtStudentId.getText(),txtStudentName.getText(), txtEmail.getText(),txtContact.getText(),txtAddress.getText(),txtNIC.getText());
+
+            try{
+                boolean isUpdated = CrudUtil.execute("UPDATE Student SET student_name=? , email=? , contact=? , address=? , nic=? WHERE student_id=?",s.getStudent_name(),s.getEmail(),s.getContact(),s.getAddress(),s.getNic());
+                if (isUpdated){
+                    new Alert(Alert.AlertType.CONFIRMATION, "Updated!").show();
+                    loadAllStudents();
+                    btnSaveStudent.setText("Save Student");
+                }else{
+                    new Alert(Alert.AlertType.WARNING, "Try Again!").show();
+                }
+
+
+            }catch (SQLException | ClassNotFoundException e){
+
+            }
+        }else {
+            Student st = new Student(
+                    txtStudentId.getText(),txtStudentName.getText(), txtEmail.getText(), txtContact.getText(),txtAddress.getText(),txtNIC.getText()
+            );
+
+            try {
+                if (CrudUtil.execute("INSERT INTO Student VALUES (?,?,?,?,?,?)",st.getStudent_id(),st.getStudent_name(),st.getEmail(),st.getContact(),st.getAddress(),st.getNic())){
+                    new Alert(Alert.AlertType.CONFIRMATION, "Saved!..").show();
+                    btnSaveStudent.setDisable(true);
+                }
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+
+            clearAllTexts();
+            loadAllStudents();
+            //saveCustomer();
+        }
     }
-}
+    }
+
+
+
