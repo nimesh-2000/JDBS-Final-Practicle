@@ -1,14 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.StudentFormController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane fx:id="studentContext" prefHeight="900.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentFormController">
+   <children>
+      <Label layoutX="603.0" layoutY="24.0" text="STUDENT MANAGE FORM">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblStudent" layoutX="35.0" layoutY="446.0" prefHeight="425.0" prefWidth="1614.0" style="-fx-background-color: #487eb0;" stylesheets="@../../../Hostal%20Manage/src/lk/ijse/hostal/view/assert/StyleSheet/DarkMode.css">
+         <columns>
+            <TableColumn prefWidth="176.00003051757812" text="Student Id" />
+            <TableColumn prefWidth="260.0" text="Student Name" />
+            <TableColumn prefWidth="248.0" text="Email" />
+            <TableColumn prefWidth="272.0" text="Contact No" />
+            <TableColumn prefWidth="208.0" text="Address" />
+            <TableColumn prefWidth="189.0" text="NIC" />
+            <TableColumn prefWidth="125.0" text="DELETE" />
+            <TableColumn prefWidth="134.0" text="UPDATE" />
+         </columns>
+      </TableView>
+      <JFXTextField fx:id="txtStudentId" layoutX="56.0" layoutY="168.0" onAction="#studentIdOnAction" promptText="Student Id">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtStudentName" layoutX="56.0" layoutY="268.0" promptText="Student Name">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtContact" layoutX="1288.0" layoutY="268.0" promptText="Contact">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtEmail" layoutX="972.0" layoutY="268.0" promptText="Email">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtNIC" layoutX="673.0" layoutY="268.0" promptText="NIC">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtAddress" layoutX="361.0" layoutY="268.0" promptText="Address">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton layoutX="361.0" layoutY="172.0" onAction="#btnSearchOnAction" style="-fx-background-color: #487eb0;" text="SEARCH" textFill="WHITE">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="361.0" layoutY="147.0" text="search student id">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
