@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
@@ -118,11 +119,34 @@ public class StudentFormController {
         txtStudentId.requestFocus();
     }
 
-    private void search() {
+    private void search() throws SQLException, ClassNotFoundException {
+        ResultSet result = CrudUtil.execute("SELECT * FROM Student WHERE student_id=?",txtStudentId.getText());
+        if (result.next()) {
+            txtStudentName.setText(result.getString(2));
+            txtEmail.setText(result.getString(3));
+            txtContact.setText(result.getString(4));
+            txtAddress.setText(result.getString(5));
+            txtNIC.setText(result.getString(6));
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Empty Result").show();
+        }
     }
 
     private void deleteStudentOnAction() {
+        try{
+
+            if(CrudUtil.execute("DELETE FROM Student WHERE student_id=?",txtStudentId.getText())){
+                new Alert(Alert.AlertType.CONFIRMATION, "Deleted!").show();
+            }else{
+                new Alert(Alert.AlertType.WARNING, "Try Again!").show();
+            }
+
+        }catch (SQLException | ClassNotFoundException e){
+
+        }
     }
+
+
 
 
     public void studentIdOnAction(ActionEvent actionEvent) {
