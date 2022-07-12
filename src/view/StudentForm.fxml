@@ -16,7 +16,7 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <TableView fx:id="tblStudent" layoutX="35.0" layoutY="446.0" prefHeight="425.0" prefWidth="1614.0" style="-fx-background-color: #487eb0;" stylesheets="@../../../Hostal%20Manage/src/lk/ijse/hostal/view/assert/StyleSheet/DarkMode.css">
+      <TableView fx:id="tblStudentManage" layoutX="35.0" layoutY="446.0" prefHeight="425.0" prefWidth="1614.0">
          <columns>
             <TableColumn prefWidth="176.00003051757812" text="Student Id" />
             <TableColumn prefWidth="260.0" text="Student Name" />
@@ -38,22 +38,22 @@
             <Font size="25.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtContact" layoutX="1288.0" layoutY="268.0" promptText="Contact">
+      <JFXTextField fx:id="txtContact" layoutX="660.0" layoutY="268.0" promptText="Contact">
          <font>
             <Font size="25.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtEmail" layoutX="972.0" layoutY="268.0" promptText="Email">
+      <JFXTextField fx:id="txtEmail" layoutX="354.0" layoutY="268.0" promptText="Email">
          <font>
             <Font size="25.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtNIC" layoutX="673.0" layoutY="268.0" promptText="NIC">
+      <JFXTextField fx:id="txtNIC" layoutX="1285.0" layoutY="268.0" promptText="NIC">
          <font>
             <Font size="25.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtAddress" layoutX="361.0" layoutY="268.0" promptText="Address">
+      <JFXTextField fx:id="txtAddress" layoutX="964.0" layoutY="268.0" promptText="Address">
          <font>
             <Font size="25.0" />
          </font>

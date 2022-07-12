@@ -13,6 +13,7 @@ public class StudentTM {
     String student_name;
     String email;
     String contact;
+    String address;
     String nic;
     Button delete;
     Button update;
