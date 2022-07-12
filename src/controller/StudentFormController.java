@@ -191,7 +191,7 @@ public class StudentFormController {
                 if (isUpdated){
                     new Alert(Alert.AlertType.CONFIRMATION, "Updated!").show();
                     loadAllStudents();
-                    btnSaveStudent.setText("Save Student");
+                    btnSaveStudent.setText("Save");
                 }else{
                     new Alert(Alert.AlertType.WARNING, "Try Again!").show();
                 }
@@ -217,7 +217,6 @@ public class StudentFormController {
 
             clearAllTexts();
             loadAllStudents();
-            //saveCustomer();
         }
     }
     }
